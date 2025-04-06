@@ -1,0 +1,369 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 0%;
+    --radius: 0.5rem;
+    --ds-background-100: #f8f8f8;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 100%;
+    --ds-background-100: #121212;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-150 font-sans;
+  }
+}
+
+.book-content {
+  font-family: "Georgia", serif;
+  line-height: 1.8;
+  font-size: 1.125rem;
+}
+
+.chapter-title {
+  font-family: "Georgia", serif;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+p {
+  @apply text-base leading-relaxed font-sans;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-serif;
+}
+
+blockquote {
+  @apply pl-4 border-l-4 border-muted italic my-4;
+}
+
+sup {
+  @apply text-xs inline font-sans;
+  vertical-align: super;
+  line-height: 0;
+}
+
+button sup {
+  display: inline;
+  font-size: 75%;
+  position: relative;
+  top: -0.5em;
+}
+
+.theme-title {
+  @apply cursor-pointer transition-all duration-150 ease-in-out font-sans;
+}
+
+.theme-title.active {
+  @apply text-primary;
+}
+
+.theme-title.inactive {
+  @apply text-muted-foreground opacity-60 hover:opacity-80;
+}
+
+.theme-transition {
+  @apply transition-colors duration-150 ease-in-out;
+}
+
+.full-width-container {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  border-top-width: 1px;
+  border-color: hsl(var(--border) / 0.6);
+  transition: colors 150ms ease-in-out;
+}
+
+.content-container {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-color: hsl(var(--border) / 0.6);
+  transition: colors 150ms ease-in-out;
+  width: 92%;
+}
+
+.content-container-padded {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-color: hsl(var(--border) / 0.6);
+  padding: 1.25rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  transition: colors 150ms ease-in-out;
+  width: 92%;
+}
+
+@media (min-width: 640px) {
+  .content-container-padded {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 100%;
+  }
+
+  .content-container {
+    width: 100%;
+  }
+}
+
+.book-button {
+  border-color: hsl(var(--border) / 0.6);
+  border-radius: 0;
+  width: 100%;
+  transition: colors 150ms ease-in-out;
+}
+
+.book-button:hover {
+  background-color: hsl(var(--accent));
+}
+
+.book-button-secondary {
+  border-color: hsl(var(--border) / 0.6);
+  border-radius: 0;
+  border-top-width: 0;
+  width: 100%;
+  transition: colors 150ms ease-in-out;
+}
+
+.book-button-secondary:hover {
+  background-color: hsl(var(--accent));
+}
+
+@media (min-width: 640px) {
+  .book-button,
+  .book-button-secondary {
+    width: auto;
+  }
+
+  .book-button-secondary {
+    border-top-width: 1px;
+    border-left-width: 0;
+  }
+}
+
+.title-main {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.title-chapter {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 1rem;
+}
+
+.text-subtitle {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+.text-paragraph {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.text-caption {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-top: 0.25rem;
+  text-align: left;
+}
+
+@media (min-width: 640px) {
+  .title-main {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .title-chapter {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .text-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .text-paragraph {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .text-caption {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .title-main {
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  .text-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+.chapter-padding {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.chapter-padding-abstract {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.logo-padding {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.figure-margin {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.figure-padding {
+  padding: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.content-spacing {
+  --space-y: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .chapter-padding {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .chapter-padding-abstract {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .logo-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .figure-margin {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .figure-padding {
+    padding: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .content-spacing {
+    --space-y: 1rem;
+  }
+}
+
+.content-spacing > * + * {
+  margin-top: var(--space-y);
+}
+
+.logo-container {
+  width: 100%;
+  max-width: 48rem;
+  transition: width 150ms ease-in-out;
+}
+
+@media (min-width: 640px) {
+  .logo-container {
+    width: 32rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .logo-container {
+    width: 40rem;
+  }
+}
+
+@media (max-width: 640px) {
+  sup {
+    font-size: 0.65rem;
+  }
+}
+
