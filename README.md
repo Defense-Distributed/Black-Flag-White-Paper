@@ -10,4 +10,4 @@ On August 25, 2021, they got the first test of these values when Everytown sent 
 
 Joined by FPC, our groups quickly organized to fight the first federal intellectual property claim in the history of 3D2A.
 
-It would not be the last.
+It would not be the last..
