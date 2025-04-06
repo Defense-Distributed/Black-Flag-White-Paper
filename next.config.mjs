@@ -21,12 +21,14 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
+    domains: ['github.com'],
   },
   experimental: {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  output: 'standalone',
 }
 
 if (userConfig) {
