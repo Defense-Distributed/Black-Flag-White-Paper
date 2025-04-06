@@ -1,4 +1,30 @@
-export const bookContent = {
+interface Figure {
+  id: string
+  number: number
+  caption: string
+  position: string
+}
+
+interface Reference {
+  id: string
+  number: number
+  text: string
+  url: string
+}
+
+interface Chapter {
+  title: string
+  content: string
+  figures: Figure[]
+}
+
+interface BookContent {
+  title: string
+  chapters: Chapter[]
+  references: Reference[]
+}
+
+export const bookContent: BookContent = {
   title: "Black Flag White Paper",
 
   chapters: [

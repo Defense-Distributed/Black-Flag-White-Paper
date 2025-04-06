@@ -8,6 +8,11 @@ import { useTheme } from "@/contexts/theme-context"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 
+interface ThemeToggleTitlesProps {
+  theme: string
+  setTheme: (theme: string) => void
+}
+
 export default function Page() {
   const [isFootnotesOpen, setIsFootnotesOpen] = useState(false)
   const { theme, setTheme } = useTheme()
@@ -75,7 +80,7 @@ export default function Page() {
   )
 }
 
-function ThemeToggleTitles({ theme, setTheme }) {
+function ThemeToggleTitles({ theme, setTheme }: ThemeToggleTitlesProps) {
   return (
     <>
       <section className="scroll-m-20">

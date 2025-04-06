@@ -4,8 +4,23 @@ import { Reference } from "@/components/references"
 import { Figure } from "@/components/figure"
 import { useMemo } from "react"
 
+interface Figure {
+  id: string
+  number: number
+  caption: string
+  position: string
+}
+
+interface ChapterProps {
+  id: string
+  number: number
+  title: string
+  content: string
+  figures?: Figure[]
+}
+
 // Inline function to process references
-function processReferences(text, keyPrefix, componentGenerator) {
+function processReferences(text: string, keyPrefix: string, componentGenerator: (id: string, key: string) => JSX.Element) {
   const parts = text.split(/(\[ref:[a-zA-Z0-9-]+\])/g)
 
   return parts.map((part, index) => {
@@ -19,14 +34,14 @@ function processReferences(text, keyPrefix, componentGenerator) {
   })
 }
 
-export function Chapter({ id, number, title, content, figures = [] }) {
+export function Chapter({ id, number, title, content, figures = [] }: ChapterProps) {
   const processedContent = useMemo(() => {
     const paragraphs = content.split(/\n\n+/).filter((p) => p.trim())
-    const result = []
+    const result: JSX.Element[] = []
 
     paragraphs.forEach((paragraph, paragraphIndex) => {
       const processed = processReferences(paragraph, `p-${paragraphIndex}`, (id, key) => (
-        <Reference key={key} id={id} />
+        <Reference key={key} id={id} className="text-primary" />
       ))
 
       result.push(
