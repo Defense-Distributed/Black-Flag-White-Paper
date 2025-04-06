@@ -4,8 +4,5 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "regions": ["sfo1"],
-  "github": {
-    "silent": true
-  }
+  "regions": ["sfo1"]
 } 
