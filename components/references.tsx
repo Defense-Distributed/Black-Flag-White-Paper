@@ -6,7 +6,7 @@ import { Modal } from "@/components/modal"
 import Link from "next/link"
 
 // Inline function to process text with clickable links
-function processText(text) {
+function processText(text: string): string | (string | JSX.Element)[] {
   const urlRegex = /(https?:\/\/[^\s]+)/g
   const matches = Array.from(text.matchAll(urlRegex))
 
@@ -14,7 +14,7 @@ function processText(text) {
     return text
   }
 
-  const result = []
+  const result: (string | JSX.Element)[] = []
   let lastIndex = 0
 
   matches.forEach((match, index) => {
@@ -47,7 +47,15 @@ function processText(text) {
   return result
 }
 
-export function References({ mode = "single", id = null, isOpen = false, onClose = null, className = "" }) {
+interface ReferencesProps {
+  mode?: "single" | "list"
+  id?: string | null
+  isOpen?: boolean
+  onClose?: (() => void) | null
+  className?: string
+}
+
+export function References({ mode = "single", id = null, isOpen = false, onClose = null, className = "" }: ReferencesProps) {
   const [isModalOpen, setIsModalOpen] = useState(isOpen)
 
   const reference = useMemo(
@@ -82,7 +90,7 @@ export function References({ mode = "single", id = null, isOpen = false, onClose
           <sup>[{reference.number}]</sup>
         </button>
 
-        <Modal isOpen={isModalOpen} onClose={handleClose} title={reference.number}>
+        <Modal isOpen={isModalOpen} onClose={handleClose} title={reference.number.toString()}>
           {processText(reference.text)}
         </Modal>
       </>
@@ -111,11 +119,21 @@ export function References({ mode = "single", id = null, isOpen = false, onClose
   )
 }
 
-export function Reference({ id, className }) {
+interface ReferenceProps {
+  id: string
+  className?: string
+}
+
+export function Reference({ id, className }: ReferenceProps) {
   return <References mode="single" id={id} className={className} />
 }
 
-export function Footnotes({ isOpen, onClose }) {
+interface FootnotesProps {
+  isOpen: boolean
+  onClose: () => void
+}
+
+export function Footnotes({ isOpen, onClose }: FootnotesProps) {
   return <References mode="list" isOpen={isOpen} onClose={onClose} />
 }
 

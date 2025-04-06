@@ -1,9 +1,18 @@
 "use client"
 import { createContext, useContext, useEffect, useState } from "react"
 
-const ThemeContext = createContext(undefined)
+interface ThemeContextType {
+  theme: string
+  setTheme: (theme: string) => void
+}
 
-export function ThemeProvider({ children }) {
+interface ThemeProviderProps {
+  children: React.ReactNode
+}
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
+
+export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState("dark")
 
   useEffect(() => {
@@ -15,13 +24,8 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     const root = document.documentElement
-    if (theme === "dark") {
-      root.classList.add("dark")
-      root.classList.remove("light")
-    } else {
-      root.classList.add("light")
-      root.classList.remove("dark")
-    }
+    root.classList.remove("light", "dark")
+    root.classList.add(theme)
     localStorage.setItem("theme", theme)
   }, [theme])
 

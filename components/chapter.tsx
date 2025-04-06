@@ -45,7 +45,7 @@ export function Chapter({ id, number, title, content, figures = [] }: ChapterPro
       ))
 
       result.push(
-        <p key={`p-${paragraphIndex}`} className="text-paragraph">
+        <p key={`p-${paragraphIndex}`} className="text-paragraph font-sans">
           {processed}
         </p>,
       )
@@ -103,7 +103,7 @@ export function Chapter({ id, number, title, content, figures = [] }: ChapterPro
           }}
         >
           {hasTitle && <h2 className="title-chapter tracking-tight">{title}</h2>}
-          <div className={`leading-7 content-spacing ${title === "Epilogue" ? "text-center" : ""}`}>
+          <div className={`leading-7 content-spacing book-content ${title === "Epilogue" ? "text-center" : ""}`}>
             {processedContent}
           </div>
         </div>

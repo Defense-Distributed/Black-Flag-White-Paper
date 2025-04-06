@@ -1,7 +1,11 @@
 "use client"
 import { Button } from "@/components/ui/button"
 
-export function Footer({ onOpenFootnotes }) {
+interface FooterProps {
+  onOpenFootnotes: () => void
+}
+
+export function Footer({ onOpenFootnotes }: FooterProps) {
   return (
     <section className="scroll-m-20">
       <div className="full-width-container">

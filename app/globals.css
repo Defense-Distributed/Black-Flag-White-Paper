@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    --font-sans: var(--font-geist-sans);
     --background: 0 0% 100%;
     --foreground: 0 0% 0%;
     --card: 0 0% 100%;
@@ -61,13 +62,17 @@
 }
 
 .book-content {
-  font-family: "Georgia", serif;
+  @apply font-sans;
   line-height: 1.8;
   font-size: 1.125rem;
 }
 
+.book-content p {
+  @apply font-sans text-base leading-relaxed;
+}
+
 .chapter-title {
-  font-family: "Georgia", serif;
+  @apply font-sans;
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 1.5rem;
@@ -83,7 +88,7 @@ h1,
 h2,
 h3,
 h4 {
-  @apply font-serif;
+  @apply font-sans;
 }
 
 blockquote {

@@ -3,7 +3,16 @@ import React from "react"
 import { X } from "lucide-react"
 import { createPortal } from "react-dom"
 
-export function Modal({ isOpen, onClose, title, children, maxWidth = "max-w-md", maxHeight = "max-h-[80vh]" }) {
+interface ModalProps {
+  isOpen: boolean
+  onClose: () => void
+  title?: string
+  children: React.ReactNode
+  maxWidth?: string
+  maxHeight?: string
+}
+
+export function Modal({ isOpen, onClose, title, children, maxWidth = "max-w-md", maxHeight = "max-h-[80vh]" }: ModalProps) {
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
