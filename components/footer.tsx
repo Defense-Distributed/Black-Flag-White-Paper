@@ -14,7 +14,7 @@ export function Footer({ onOpenFootnotes }: FooterProps) {
             Footnotes
           </Button>
           <Button
-            onClick={() => window.open("https://github.com/Defense-Distributed/BFWP", "_blank")}
+            onClick={() => window.open("https://github.com/Defense-Distributed/Black-Flag-White-Paper", "_blank")}
             variant="outline"
             className="book-button-secondary"
           >
